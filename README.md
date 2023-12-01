@@ -37,7 +37,7 @@ ros2 launch robot_gazebo robot_sim.launch.py
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-**Note:** To use joystick teleoperation, uncomment the final lines from `robot_sim.launch.py` and **do NOT** execute `teleop_twist_keyboard`
+**Note:** To use joystick teleoperation, **uncomment** the final lines from `robot_sim.launch.py` and **do NOT** execute `teleop_twist_keyboard`
 ```
 # Node(
 # package = "joy",
@@ -54,11 +54,11 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 ros2 launch lio_sam run.launch.py
 ```
+**Note:** Teleoperate the robot around the environment until a satisfactory map is built.
 
-4. Save map
+4. Save the PCD map:
 ```
 ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap
+# OR
+ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap "{resolution: 0.2 destination: /Documents/PCD_Map}"
 ```
-```
-ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap "{resolution: 0.2 destination: /Downloads/service_LOAM}"
-``1
