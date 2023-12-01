@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/urdf/suspension/suspension.gazebo.xacro"/>
+  
+  <xacro:macro name="steering_v0" params="prefix parent *joint_origin *joint_axis">
+	<joint name="${prefix}_steering_joint" type="revolute"> <!-- revolute -->
+	  <xacro:insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="${prefix}_steering_link"/>
+          <limit effort="5" velocity="6.28"  lower="-2.1" upper="2.1" />
+          <xacro:insert_block name="joint_axis"/>
+	</joint>
+
+	<link name="${prefix}_steering_link">
+	  <visual>
+		<geometry>
+		  <mesh filename="package://robot_description/meshes/DAE/suspension/${prefix}_sus.dae"/>
+		</geometry>
+	  </visual>
+	  <collision>
+		<geometry>
+		  <mesh filename="package://robot_description/meshes/STL/suspension/${prefix}_sus.stl"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 0 -0.02"/>
+		<mass value="0.15"/>
+		<inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.000004" />
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

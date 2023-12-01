@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/urdf/rear_wheel/rear_wheel.transmission.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/rear_wheel/rear_wheel.gazebo.xacro"/>
+  
+  <xacro:macro name="rear_wheel_v0" params="prefix parent *joint_origin *joint_axis">
+	<joint name="${prefix}_wheel_joint" type="continuous">
+	  <xacro:insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="${prefix}_wheel_link"/>
+	  <xacro:insert_block name="joint_axis"/>
+	</joint>
+
+	<link name="${prefix}_wheel_link">
+	  <visual>
+		<geometry>
+		  <mesh filename="package://robot_description/meshes/DAE/rear_wheel/wheel.dae"/>
+		</geometry>
+	  </visual>
+	  <collision>
+		<geometry>
+		  <mesh filename="package://robot_description/meshes/STL/rear_wheel/wheel.stl"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 0 0"/>
+		<mass value="1.75"/>
+		<inertia ixx="0.00458" ixy="0" ixz="0" iyy="0.00871" iyz="0" izz="0.00458"/>
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>
+

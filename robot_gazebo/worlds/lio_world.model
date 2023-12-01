@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="default">
+
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <light name='user_directional_light_0' type='directional'>
+      <pose>3.5 0.5 5 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-4.52725 0.827193 23.1608 0 1.37564 -0.007806</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>150</iters>
+          <precon_iters>0</precon_iters>
+          <sor>1.400000</sor>
+          <use_dynamic_moi_rescaling>1</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0.00001</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>2000.000000</contact_max_correcting_vel>
+          <contact_surface_layer>0.01000</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <include>
+      <name>rtab_map_stage</name>
+      <uri>model://rtab_map_stage</uri>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>construction_barrel</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>6.5 -5 0.08 0 0 -0.8</pose>
+    </include>
+    <include>
+      <name>construction_barrel1</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>-0.8 -5.4 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>construction_barrel2</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>-2.7 2 0.1 0 0 -2.86</pose>
+    </include>
+    <include>
+      <name>construction_barrel3</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>1 1.5 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>construction_barrel4</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>-7.4 5.5 0.1 0 0 -2.86</pose>
+    </include>
+    <include>
+      <name>construction_barrel5</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>-2.4 -2.0 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>construction_barrel6</name>
+      <uri>model://construction_barrel</uri>
+      <static>true</static>
+      <pose>6.9 6.9 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>brick_box_3x1x3</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>3.3 4.8 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>brick_box_3x1x3_0</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>-2.7 5.0 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>brick_box_3x1x3_1</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>-4.5 -5.2 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <name>brick_box_3x1x3_2</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>-5.6 -0.4 0.1 0 0 -1.505</pose>
+    </include>
+    <include>
+      <name>brick_box_3x1x3_3</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>4.5 -1.6 0.1 0 0 0.9</pose>
+    </include>
+    <include>
+      <name>brick_box_3x1x3_4</name>
+      <uri>model://brick_box_3x1x3</uri>
+      <static>true</static>
+      <pose>2.8 -6.2 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://robot</uri>
+      <pose>0 0 0.7 3.141592654 0 3.141592654</pose>
+      <static>false</static>
+    </include>
+
+  </world>
+</sdf>

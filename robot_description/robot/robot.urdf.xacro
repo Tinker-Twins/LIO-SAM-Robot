@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<robot name="yn_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="M_PI" value="3.14159274"/>
+
+  <xacro:include filename="$(find robot_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/suspension/suspension.urdf.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/front_wheel/front_wheel.urdf.xacro"/>
+  <xacro:include filename="$(find robot_description)/urdf/rear_wheel/rear_wheel.urdf.xacro"/>
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>  
+  <xacro:include filename="$(find robot_description)/urdf/IMU/IMU.urdf.xacro"/>
+
+  <!-- =============== Link & Joint =============== -->
+  <!-- Base Footprint -->
+  <link name="base_footprint"/>
+
+  <xacro:base_v0 parent="base_footprint">
+	<origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:base_v0>
+
+  <!-- Suspension -->
+  <!-- Front Right Sus -->
+  <xacro:steering_v0 prefix="front_right" parent="base_link">
+	<origin xyz="-0.35 -0.15 0" rpy="${M_PI} 0 0"/>
+	<axis xyz="0 0 1"/>
+  </xacro:steering_v0>
+  <!-- Front Left Sus -->
+  <xacro:steering_v0 prefix="front_left" parent="base_link">
+	<origin xyz="-0.35 0.15 0" rpy="${M_PI} 0 0"/>
+	<axis xyz="0 0 1"/>
+  </xacro:steering_v0>
+
+  <!-- Wheel -->
+  <!-- Front Right Wheel -->
+  <xacro:front_wheel_v0 prefix="front_right" parent="front_right_steering_link">
+	<origin xyz="0.083562 0.02 -0.099586"/>
+	<axis xyz="0 1 0"/>
+  </xacro:front_wheel_v0>
+  <!--  Front Left Wheel -->
+  <xacro:front_wheel_v0 prefix="front_left" parent="front_left_steering_link">
+	<origin xyz="0.083562 -0.02 -0.099586"/>
+	<axis xyz="0 -1 0"/>
+  </xacro:front_wheel_v0>
+  
+  <!-- Rear Right Wheel -->
+  <xacro:rear_wheel_v0 prefix="right" parent="base_link">
+	<origin xyz="0.275 -0.17 0.1" rpy="0 0 0"/>
+	<axis xyz="0 1 0"/>
+  </xacro:rear_wheel_v0>
+  <!--  Rear Left Wheel -->
+  <xacro:rear_wheel_v0 prefix="left" parent="base_link">
+	<origin xyz="0.275 0.17 0.1" rpy="0 0 ${M_PI}"/>
+	<axis xyz="0 -1 0"/>
+  </xacro:rear_wheel_v0>
+
+  <!--  Velodyne -->
+  <xacro:VLP-16 parent="base_link" name="velodyne" topic="/points_raw" hz="10" samples="440">
+	<origin xyz="0 0 -0.4" rpy="0 ${M_PI} 0"/>
+  </xacro:VLP-16>    
+
+  <!-- IMU -->
+  <xacro:imu_v0 parent="base_link">
+  <origin xyz="0 0 -0.297322" rpy="0 ${M_PI} 0"/>
+  </xacro:imu_v0>
+
+  <!-- ===============  Wheel Transmission =============== -->
+  <xacro:rear_wheel_trans_v0 prefix="right"/>
+  <xacro:rear_wheel_trans_v0 prefix="left"/>
+
+  <!-- =============== Gazebo =============== -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo_v0/>
+
+  <!-- Wheel -->
+  <xacro:front_wheel_gazebo_v0 prefix="front_right"/>
+  <xacro:front_wheel_gazebo_v0 prefix="front_left"/>
+  <xacro:rear_wheel_gazebo_v0 prefix="right"/>
+  <xacro:rear_wheel_gazebo_v0 prefix="left"/>
+
+  <!-- Steering -->
+  <xacro:steering_gazebo_v0 prefix="front_right"/>
+  <xacro:steering_gazebo_v0 prefix="front_left"/>
+
+  <!-- IMU -->
+  <xacro:imu_gazebo_v0/>
+</robot>

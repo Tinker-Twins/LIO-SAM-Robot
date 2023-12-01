@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="delirobo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/urdf/IMU/IMU.gazebo.xacro"/>
+
+  <xacro:macro name="imu_v0" params=" parent *joint_origin">
+	<joint name="imu_joint" type="fixed">
+	  <xacro:insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="imu_link"/>
+	</joint>
+
+	<link name="imu_link">
+	  <!--
+	  <visual>
+		<geometry>
+		  <mesh filename="package://omni_robot_description/meshes/DAE/IMU/IMU_sensor.dae"/>
+		</geometry>
+	  </visual>
+	  -->
+	  <inertial>
+		<origin xyz="0 0 0"/>
+		<mass value="0.005"/>
+		<inertia ixx="1.67e-8" ixy="0" ixz="0" iyy="1.67e-8" iyz="0" izz="1.67e-8" />
+	  </inertial>
+	</link>
+  </xacro:macro>
+
+</robot>
