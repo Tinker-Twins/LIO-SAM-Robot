@@ -78,7 +78,7 @@
     surroundingKeyframeDensity: 2.0              # Meters, downsample surrounding keyframe poses   
     surroundingKeyframeSearchRadius: 50.0        # Meters, within n meters scan-to-map optimization (when loop closure disabled)
 
-    # Loop closure
+    # Loop Closure
     loopClosureEnableFlag: true                  # If using loop closure, set to "true"
     loopClosureFrequency: 1.0                    # Hz, regulate loop closure constraint add frequency
     surroundingKeyframeSize: 50                  # Submap size (when loop closure enabled)
