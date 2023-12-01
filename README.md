@@ -63,6 +63,8 @@ ros2 launch lio_sam run.launch.py
 4. Save the PCD map:
 ```
 ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap
-# OR
+```
+**OR**
+```
 ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap "{resolution: 0.2 destination: /Documents/PCD_Map}"
 ```
