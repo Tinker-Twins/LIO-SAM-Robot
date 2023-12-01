@@ -2,6 +2,10 @@
 
 ROS 2 Packages for Testing LIO-SAM on a Robotic Vehicle with 3D LIDAR and 9-Axis IMU.
 
+| <img src="media/gazebo.png" width="500"> | <img src="media/rviz.png" width="500"> | <img src="media/cloudcompare.png" width="500"> |
+|:--------:|:--------:|:--------:|
+| Robot Simulation (Gazebo) | Real-Time Data Visualization (RViz) | Saved PCD Map Visualization & Post-Processing (CloudCompare) |
+
 ## Dependencies
 
 - [ROS2](https://docs.ros.org/en/foxy/Installation.html) (Tested with ROS 2 Foxy Desktop Install)
