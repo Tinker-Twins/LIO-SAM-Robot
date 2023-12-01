@@ -1,5 +1,7 @@
 # LIO-SAM-Robot
 
+ROS 2 Packages for Testing LIO-SAM on a Robotic Vehicle with 3D LIDAR and 9-Axis IMU.
+
 ## Dependencies
 
 - [ROS2](https://docs.ros.org/en/foxy/Installation.html) (Tested with ROS 2 Foxy Desktop Install)
