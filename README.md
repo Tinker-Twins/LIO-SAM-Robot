@@ -69,3 +69,7 @@ ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap
 ros2 service call /lio_sam/save_map lio_sam/srv/SaveMap "{resolution: 0.2 destination: /Documents/PCD_Map}"
 ```
 **Note:** Map files will be saved to the path pointed by the current terminal window.
+
+## Similar Repositories:
+
+https://github.com/Tinker-Twins/LIDAR-SLAM-Robot
